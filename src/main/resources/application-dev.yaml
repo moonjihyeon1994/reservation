@@ -1,0 +1,37 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: test-kafka.edu-common:9092
+        streams:
+          binder:
+            configuration:
+              default:
+                key:
+                  serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+                value:
+                  serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+      bindings:
+        sale-out:
+          destination: ChatResult
+          contentType: application/json
+        history-out:
+          destination: ChattingHistory
+          contentType: application/json
+  redis:
+    host: redis-leader.twopro
+    port: 6379
+
+  zipkin:
+    base-url: http://amdp-zipkin.hrd-edu.cloudzcp.com
+    enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:testdb;
+    username: sa
+    password: null
+    driver-class-name: org.h2.Driver

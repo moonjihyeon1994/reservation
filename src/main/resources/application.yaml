@@ -1,0 +1,25 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: reservation
+  thymeleaf:
+    prefix: classpath:/static
+    suffix: .html
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    enabled: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+      use-new-id-generator-mappings: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
